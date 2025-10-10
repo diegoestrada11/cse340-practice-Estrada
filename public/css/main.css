@@ -11,6 +11,10 @@ img {
 }
 
 body {
+    &.blue-theme { background-color: #15517b; }
+    &.green-theme { background-color: #16ca16; }
+    &.red-theme { background-color: #a8162c; }
+
     nav {s
         ul {
             list-style-type: none;
