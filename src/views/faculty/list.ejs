@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+
+<main class="faculty-container">
+    <h1><%= title %></h1>
+    <p>Learn more about the dedicated professionals who make our learning posible.</p>
+
+    <section class="faculty-sorting">
+        <p><strong>Sort Faculty:</strong></p>
+        <ul class="sort-links">
+            <li><a href="/faculty?sort=name" class="<%= currentSort === 'name' ? 'selected' : '' %>">By Name</a></li>
+            <li><a href="/faculty?sort=department" class="<%= currentSort === 'department' ? 'selected' : '' %>">By Department</a></li>
+            <li><a href="/faculty?sort=title" class="<%= currentSort === 'title' ? 'selected' : '' %>">By Title</a></li>
+        </ul>
+    </section>
+
+    <section class="faculty-grid">
+        <% faculty.forEach(person => { %>
+            <article class="faculty-member">
+                <h2>
+                    <a href="/faculty/<%= person.id %>"><%= person.name %></a>
+                </h2>
+                <p><em><%= person.title %></em></p>
+                <p>Department: <%= person.department %></p>
+            </article>
+        <% }) %>
+    </section>
+
+    <div class="back-home">
+        <a href="/">← Back to Home</a>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>
