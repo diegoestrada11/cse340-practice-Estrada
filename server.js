@@ -5,6 +5,8 @@ import { fileURLToPath } from 'url';
 // Import MVC components
 import routes from './src/controllers/routes.js';
 import { addImportantLocalVariables, addOptionalLocalVariables } from './src/middleware/global.js';
+import { setupDatabase, testConnection } from './src/models/setup.js';
+
 
 /**
  * Server configuration
@@ -97,6 +99,13 @@ if (NODE_ENV.includes('dev')) {
 /**
  * Start Server
  */
-app.listen(PORT, () => {
-    console.log(`Server is running on http://127.0.0.1:${PORT}`);
+app.listen(PORT, async () => {
+    try {
+        await testConnection();
+        await setupDatabase();
+        console.log(`Server is running on http://127.0.0.1:${PORT}`);
+    } catch (error) {
+        console.error('Database setup failed:', error.message);
+        process.exit(1);
+    }
 });
