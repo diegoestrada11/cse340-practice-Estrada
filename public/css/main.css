@@ -6,6 +6,10 @@ html, body {
 }
 
 body {
+    img {
+        max-width: 10%;
+        display: block;
+    }
     nav {
         ul {
             list-style-type: none;
