@@ -1,18 +1,24 @@
-// Import express using ESM syntax
+// Imports
 import express from 'express';
 
-// Create an instance of an Express application
+/**
+ * Declare Important Variables
+ */
+const PORT = process.env.PORT || 3000;
+const name = process.env.NAME;
+
+/**
+ * Setup Express Server
+ */
 const app = express();
 
-const name = process.env.NAME; // 
-
+/**
+ * Declare Routes
+ */
 // Define a route handler for the root URL ('/')
 app.get('/', (req, res) => {
-    res.send(`Hello, ${name}!`); // <-- UPDATED
+    res.send(`Hello, ${name}!`);
 });
-
-// Define the port number the server will listen on
-const PORT = 3000;
 
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
