@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 /**
  * Declare Routes
  */
+
 // Define a route handler for the root URL ('/')
 app.get('/', (req, res) => {
     res.send(`Hello, ${name}!`);
