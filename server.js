@@ -6,6 +6,7 @@ import path from 'path';
 /**
  * Declare Important Variables
  */
+const NODE_ENV = process.env.NODE_ENV || 'production';
 const PORT = process.env.PORT || 3000;
 const name = process.env.NAME;
 const __filename = fileURLToPath(import.meta.url);
