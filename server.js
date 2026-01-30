@@ -99,6 +99,14 @@ app.get('/products', (req, res) => {
     res.render('products', { title });
 });
 
+// Course catalog list page
+app.get('/catalog', (req, res) => {
+    res.render('catalog', {
+        title: 'Course Catalog',
+        courses: courses
+    });
+});
+
 /**
  * Error Handling
 */
