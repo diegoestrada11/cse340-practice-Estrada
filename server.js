@@ -93,6 +93,33 @@ app.use((req, res, next) => {
     next();
 });
 
+// Global middleware for time-based greeting
+app.use((req, res, next) => {
+    const currentHour = new Date().getHours();
+
+    if (currentHour < 12) {
+        res.locals.greeting = "<p>Good morning! ☀️</p>";
+    } else if (currentHour < 18) {
+        res.locals.greeting = "<p>Good afternoon! 🌤️</p>";
+    } else {
+        res.locals.greeting = "<p>Good evening! 🌙</p>";
+    }
+
+    next();
+});
+
+// Global middleware for random theme selection
+app.use((req, res, next) => {
+    const themes = ['blue-theme', 'green-theme', 'red-theme'];
+
+    const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+
+    res.locals.bodyClass = randomTheme;
+
+    next();
+});
+
+
 /**
  * Routes
  */
