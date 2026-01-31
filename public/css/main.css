@@ -6,6 +6,10 @@ html, body {
 }
 
 body {
+    &.blue-theme { background-color: #337aad; }
+    &.green-theme { background-color: #2a7b2a; }
+    &.red-theme { background-color: #44121b; }
+    
     img {
         max-width: 10%;
         display: block;
