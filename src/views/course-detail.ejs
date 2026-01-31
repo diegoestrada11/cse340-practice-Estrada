@@ -1,5 +1,6 @@
 <%- include('partials/header') %>
 <main>
+    
     <div class="course-header">
         <h1><%= course.title %></h1>
         <p class="course-meta"><%= course.id %> • <%= course.credits %> credits</p>
@@ -15,6 +16,17 @@
                 <a href="/catalog/<%= course.id %>?sort=professor" class="<%= currentSort === 'professor' ? 'active' : '' %>">Professor</a>
                 <a href="/catalog/<%= course.id %>?sort=room" class="<%= currentSort === 'room' ? 'active' : '' %>">Room</a>
             </div>
+
+                <% if (queryParams.sort) { %>
+                <div class="sort-message">
+                    <p>Currently sorted by: <%= queryParams.sort %></p>
+                </div>
+            <% } else { %>
+                <div class="sort-message">
+                    <p>No sorting applied, using default sorting by time.</p>
+                </div>
+            <% } %>
+
         </div>
 
         <div class="section-list">

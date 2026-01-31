@@ -119,6 +119,13 @@ app.use((req, res, next) => {
     next();
 });
 
+// Global middleware to share query parameters with templates
+app.use((req, res, next) => {
+    // Make req.query available to all templates for debugging and conditional rendering
+    res.locals.queryParams = req.query || {};
+
+    next();
+});
 
 /**
  * Routes
