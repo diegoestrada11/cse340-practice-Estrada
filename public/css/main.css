@@ -8,7 +8,7 @@ html, body {
 body {
     &.blue-theme { background-color: #337aad; }
     &.green-theme { background-color: #2a7b2a; }
-    &.red-theme { background-color: #44121b; }
+    &.red-theme { background-color: #930f27; }
     
     img {
         max-width: 10%;
