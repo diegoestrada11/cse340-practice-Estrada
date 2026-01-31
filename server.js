@@ -127,6 +127,14 @@ app.use((req, res, next) => {
     next();
 });
 
+// Route-specific middleware that sets custom headers
+const addDemoHeaders = (req, res, next) => {
+
+    res.setHeader('X-Demo-Page', 'true');
+    res.setHeader('X-Middleware-Demo', 'This header only exists on the demo page');
+    next();
+};
+
 /**
  * Routes
  */
@@ -190,6 +198,13 @@ app.get('/catalog/:courseId', (req, res, next) => {
         title: `${course.id} - ${course.title}`,
         course: { ...course, sections: sortedSections },
         currentSort: sortBy
+    });
+});
+
+// Demo page route with header middleware
+app.get('/demo', addDemoHeaders, (req, res) => {
+    res.render('demo', {
+        title: 'Middleware Demo Page'
     });
 });
 
