@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body class="<%= bodyClass %>">
+    <header>
+        <nav>
+            <a href="/">Home</a> |
+            <a href="/catalog">Courses</a> |
+            <a href="/faculty">Faculty</a> |
+            <a href="/about">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page header -->
+        <section class="faculty-header">
+            <h1>Faculty Directory</h1>
+        </section>
+
+        <!-- Sorting links -->
+        <div class="faculty-sorting">
+            <span>Sort by:</span>
+            <a href="/faculty?sort=department" class="<%= currentSort === 'department' ? 'active' : '' %>">Department</a>
+            <a href="/faculty?sort=name" class="<%= currentSort === 'name' ? 'active' : '' %>">Name</a>
+            <a href="/faculty?sort=title" class="<%= currentSort === 'title' ? 'active' : '' %>">Title</a>
+        </div>
+
+        <!-- Faculty list -->
+        <div class="faculty-list">
+            <% faculty.forEach(member => { %>
+                <div class="faculty-card">
+                    <h3>
+                        <a href="/faculty/<%= member.id %>">
+                            <%= member.name %>
+                        </a>
+                    </h3>
+                    <p class="faculty-meta">
+                        <%= member.department %> — <%= member.title %>
+                    </p>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <%= currentYear %></p>
+        <%= greeting %>
+    </footer>
+</body>
+</html>
