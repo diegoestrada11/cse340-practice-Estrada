@@ -19,5 +19,6 @@
   "devDependencies": {
     "nodemon": "^3.1.11",
     "ws": "^8.19.0"
-  }
+  },
+  "type": "module"
 }
