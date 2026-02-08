@@ -1,57 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/css/main.css">
-</head>
-
-<body class="<%= bodyClass %>">
-    <header>
-        <nav>
-            <a href="/">Home</a> |
-            <a href="/catalog">Courses</a> |
-            <a href="/faculty">Faculty</a> |
-            <a href="/about">About</a>
-        </nav>
-    </header>
-
-    <main>
-        <!-- Header -->
-        <section class="faculty-header">
-            <h1><%= faculty.name %></h1>
-            <p class="faculty-title"><%= faculty.title %></p>
-            <p class="faculty-department"><%= faculty.department %></p>
-        </section>
-
-        <!-- Details -->
-        <section class="faculty-details">
-            <div class="detail-section">
-                <h2>Contact Information</h2>
-
-                <div class="detail-item">
-                    <strong>Office:</strong> <%= faculty.office %>
-                </div>
-
-                <div class="detail-item">
-                    <strong>Phone:</strong> <%= faculty.phone %>
-                </div>
-
-                <div class="detail-item">
-                    <strong>Email:</strong>
-                    <a href="mailto:<%= faculty.email %>"><%= faculty.email %></a>
-                </div>
+<%- include('../partials/header') %>
+<main>
+    <div class="faculty-profile">
+        <h1><%= faculty.name %></h1>
+        <p class="faculty-title"><%= faculty.title %></p>
+        <p class="faculty-department"><%= faculty.department %> Department</p>
+    </div>
+    
+    <div class="faculty-contact">
+        <h2>Contact Information</h2>
+        <div class="contact-details">
+            <div class="contact-item">
+                <strong>Office:</strong> <%= faculty.office %>
             </div>
-        </section>
-
-        <div class="navigation">
-            <a href="/faculty">← Back to Faculty Directory</a>
+            <div class="contact-item">
+                <strong>Phone:</strong> <a href="tel:<%= faculty.phone %>"><%= faculty.phone %></a>
+            </div>
+            <div class="contact-item">
+                <strong>Email:</strong> <a href="mailto:<%= faculty.email %>"><%= faculty.email %></a>
+            </div>
         </div>
-    </main>
-
-    <footer>
-        <p>&copy; <%= currentYear %></p>
-        <%= greeting %>
-    </footer>
-</body>
-</html>
+    </div>
+    
+    <div class="navigation">
+        <p><a href="/faculty">&larr; Back to Faculty Directory</a></p>
+    </div>
+</main>
+<%- include('../partials/footer') %>

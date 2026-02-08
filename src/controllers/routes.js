@@ -12,6 +12,30 @@ import { homePage, aboutPage, demoPage, testErrorPage } from './index.js';
 const router = Router();
 
 /**
+ * ============================
+ * Router-level middleware
+ * ============================
+ */
+
+// Add catalog-specific styles to all catalog routes
+router.use('/catalog', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/catalog.css">', 10);
+    next();
+});
+
+// Add faculty-specific styles to all faculty routes
+router.use('/faculty', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/faculty.css">', 10);
+    next();
+});
+
+/**
+ * ============================
+ * Routes
+ * ============================
+ */
+
+/**
  * Home and basic pages
  */
 router.get('/', homePage);
