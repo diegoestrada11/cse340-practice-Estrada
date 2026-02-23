@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import contactRoutes from './forms/contact.js';
 
 // Middleware
 import { addDemoHeaders } from '../middleware/demo/headers.js';
@@ -26,6 +27,12 @@ router.use('/catalog', (req, res, next) => {
 // Add faculty-specific styles to all faculty routes
 router.use('/faculty', (req, res, next) => {
     res.addStyle('<link rel="stylesheet" href="/css/faculty.css">', 10);
+    next();
+});
+
+// Add contact-specific styles to all contact routes
+router.use('/contact', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/contact.css">');
     next();
 });
 
@@ -62,5 +69,10 @@ router.get('/demo', addDemoHeaders, demoPage);
  * Route to trigger a test error
  */
 router.get('/test-error', testErrorPage);
+
+/** 
+ * Contact form routes 
+ */
+router.use('/contact', contactRoutes);
 
 export default router;
