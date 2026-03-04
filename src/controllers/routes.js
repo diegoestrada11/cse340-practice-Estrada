@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import contactRoutes from './forms/contact.js';
+import registrationRoutes from './forms/registration.js';
 
 // Middleware
 import { addDemoHeaders } from '../middleware/demo/headers.js';
@@ -33,6 +34,12 @@ router.use('/faculty', (req, res, next) => {
 // Add contact-specific styles to all contact routes
 router.use('/contact', (req, res, next) => {
     res.addStyle('<link rel="stylesheet" href="/css/contact.css">');
+    next();
+});
+
+// Add registration-specific styles to all registration routes
+router.use('/register', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/registration.css">');
     next();
 });
 
@@ -74,5 +81,8 @@ router.get('/test-error', testErrorPage);
  * Contact form routes 
  */
 router.use('/contact', contactRoutes);
+
+// Registration routes
+router.use('/register', registrationRoutes);
 
 export default router;
