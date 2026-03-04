@@ -5,6 +5,7 @@ import { setupDatabase, testConnection } from './src/models/setup.js';
 import session from 'express-session';
 import connectPgSimple from 'connect-pg-simple';
 import { caCert } from './src/models/db.js';
+import { startSessionCleanup } from './src/utils/session-cleanup.js';
 
 // Import MVC components
 import routes from './src/controllers/routes.js';
@@ -50,6 +51,10 @@ app.use(session({
         maxAge: 24 * 60 * 60 * 1000
     }
 }));
+
+
+// Start automatic session cleanup
+startSessionCleanup();
 
 /**
  * Configure Express
